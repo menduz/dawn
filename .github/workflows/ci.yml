@@ -77,6 +77,11 @@ jobs:
         SCCACHE_GHA_ENABLED: "true"
         DEPOT_TOOLS_WIN_TOOLCHAIN: 0
 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: gn-${{ matrix.build_type }}
+        path: ${{ steps.strings.outputs.build-output-dir }}
+
   cmake:
     strategy:
       # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
