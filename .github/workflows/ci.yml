@@ -161,6 +161,11 @@ jobs:
       env:
         SCCACHE_GHA_ENABLED: "true"
 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.build_type }}
+        path: ${{ steps.strings.outputs.build-output-dir }}
+
   golang:
     name: Go Build and Test
     runs-on: ubuntu-latest
